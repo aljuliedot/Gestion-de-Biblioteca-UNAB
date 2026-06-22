@@ -58,7 +58,9 @@ class Usuario():
     def __init__(self, nombre, email, contraseña):
         self._nombre = nombre
         self._email = email
-        self._contraseña = generate_password_hash(contraseña)
+        self._contraseña = generate_password_hash(contraseña) # Se define una contraseña y genera un hash para mejor protección.
+
+# Se crea getter y setter para el encapsulamiento de datos
         
     def get_nombre(self):
         return self._nombre
@@ -79,7 +81,7 @@ class Usuario():
         self._contraseña = generate_password_hash(contraseña)
         
     def iniciar_sesion(self, contraseña_ingresada):
-        if check_password_hash(self._contraseña, contraseña_ingresada):
+        if check_password_hash(self._contraseña, contraseña_ingresada): #Se compara la contraseña ingresada con la hasheada.
             return "Sesión Iniciada"
         return "Error en la contraseña"
 
@@ -140,12 +142,3 @@ class Historial():
     def __init__(self):
         pass
         
-class Bibliotecario():
-    def __init__(self, nombre, email, contraseña):
-        super().__init__(nombre, email, contraseña)
-        
-    def agregar_libro(self, libro):
-        pass
-        
-    def eliminar_libro(self, libro):
-        pass
