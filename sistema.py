@@ -29,7 +29,7 @@ class Usuario():
         self._contraseña = generate_password_hash(contraseña)
         
     def iniciar_sesion(self, contraseña_ingresada):
-        if check_password_hash(self.__contraseña, contraseña_ingresada):
+        if check_password_hash(self._contraseña, contraseña_ingresada):
             return "Sesión Iniciada"
         return "Error en la contraseña"
 
