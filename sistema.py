@@ -125,18 +125,47 @@ class Libro():
         estado = "Prestado" if self._esta_prestado else "Disponible"
         return f"'{self._titulo}' - {self._autor} ({self._genero}) [{estado}]"
 
-
-
-        
-
-
 class Prestamo():
     def __init__(self):
         pass
         
 class Estrategia_Recomendacion():
-    def __init__(self):
+    def ejecutar(self, libros: list, preferencia): #se le da la lista de libros de la clase Biblioteca a todas las recomendaciones
         pass
+
+class Estrategia_Autor(Estrategia_Recomendacion):
+    def ejecutar(self, libros:list, preferencia):
+        encontrado = False
+        for libro in libros:
+            if preferencia.lower() == libro.get_autor().lower(): #Compara las variables en minusculas para no hacer diferencias con mayusculas
+                print("La recomendación según el autor es la siguiente", libro)
+                encontrado = True
+                return libro
+        if not encontrado:
+            print("No se encontraron libros en base a esa recomendación.")
+            return None
+    
+class Estrategia_Genero(Estrategia_Recomendacion):
+    def ejecutar(self, libros: list, preferencia):
+        encontrado = False
+        for libro in libros:
+            if preferencia.lower()== libro.get_genero().lower():
+                print("La recomendación según el género del libro es la siguiente:", libro)
+                encontrado = True
+                return libro
+        if not encontrado:
+            print("No se encontraron libros en base a esa recomendación.")
+            return None
+    
+class Recomendacion(): #Almacenamos las estrategias y la usamos en ejecutar_estrategia
+    def __init__(self, estrategia):
+        self._estrategia = estrategia
+     
+    def set_estrategia(self, estrategia):
+        self._estrategia = estrategia
+        
+    def ejecutar_estrategia(self, libros: list, preferencia):
+        return self._estrategia.ejecutar(libros, preferencia)
        
 class Historial():
     def __init__(self):
