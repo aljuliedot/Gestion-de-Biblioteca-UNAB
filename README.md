@@ -186,6 +186,5 @@ classDiagram
     Historial o-- "0..*" Libro : analiza
     Estrategia_Recomendacion <|-- Estrategia_Autor
     Estrategia_Recomendacion <|-- Estrategia_Genero
-    Recomendacion o-- Estrategia_Genero : usa
-    Recomendacion --> Estrategia_Recomendacion
+    Recomendacion --> Estrategia_Recomendacion : usa
 ```
