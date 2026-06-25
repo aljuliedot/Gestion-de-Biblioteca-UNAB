@@ -19,8 +19,12 @@ Este proyecto fue programado con el lenguaje de programación Python junto con e
 ## Diagrama de Clases
 
 ```mermaid
-graph TD;
-    A[Inicio] --> B{Decisión};
-    B -- Sí --> C[Proceso 1];
-    B -- No --> D[Proceso 2];
+classDiagram
+    ClassA <|-- ClassB
+    ClassC *-- ClassD
+    ClassE <-- ClassF
+    ClassG : +int propertyA
+    ClassG: +doSomething()
+    ClassH: -int propertyB
+    ClassH: -doSomething()
 ```
