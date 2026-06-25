@@ -1,4 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash #Esto es para la seguridad de contraseñas
+from datetime import date #Esto para controlar fechas
 
 class Biblioteca():
     def __init__(self):
@@ -137,7 +138,7 @@ class Prestamo():
     def __init__(self, usuario, libro):
         self._usuario = usuario                        # Guarda el objeto Usuario
         self._libro = libro                            # Guarda el objeto Libro
-        self._fecha_inicio = "23/06/2026"              # Fecha fija interna y legible
+        self._fecha = date.today()              # Fecha del prestamo
         self._esta_vigente = True                      # El préstamo arranca activo
 
     # - Métodos para Obtener Datos -
@@ -148,7 +149,7 @@ class Prestamo():
         return self._libro
 
     def obtener_fecha_inicio(self):
-        return self._fecha_inicio
+        return self._fecha
 
     def comprobar_si_esta_vigente(self):
         return self._esta_vigente
@@ -160,7 +161,7 @@ class Prestamo():
 
     def __str__(self):
         estado = "En curso" if self._esta_vigente else "Devuelto"
-        return f"Préstamo: {self._usuario.get_nombre()} tiene '{self._libro.get_titulo()}' | Fecha: {self._fecha_inicio} | Estado: {estado}"
+        return f"Préstamo: {self._usuario.get_nombre()} tiene '{self._libro.get_titulo()}' | Fecha: {self._fecha} | Estado: {estado}"
         
         
 class Estrategia_Recomendacion():
