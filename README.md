@@ -178,12 +178,12 @@ classDiagram
         +ejecutar_estrategia(libros, pref)
     }
 
-    Biblioteca "0..*" --> "0..*" Libro : agrega
-    Biblioteca "0..*" o-- Prestamo : registra
+    Biblioteca --> Libro : agrega 0..*
+    Biblioteca o-- Prestamo : registra 0..*
     Prestamo --> Libro : asocia
-    Prestamo --> "0..*" Usuario : asocia
+    Prestamo --> Usuario : asocia
     Historial ..> Usuario : consulta
-    Historial o-- "0..*" Libro : analiza
+    Historial o-- Libro : analiza 0..*
     Estrategia_Recomendacion <|-- Estrategia_Autor
     Estrategia_Recomendacion <|-- Estrategia_Genero
     Recomendacion --> Estrategia_Recomendacion : usa
