@@ -103,63 +103,61 @@ Se abre una ventana con un panel lateral (Catálogo, Agregar libro, Recomendar, 
 ```mermaid
 classDiagram
     class Biblioteca {
-        -_libros= list
-        -_prestamos= list
+        -_libros: list
+        -_prestamos: list
         +agregar_libro(libro)
-        +buscar_libro(titulo)= Libro
-        +catalogo()= list
-        +libros_disponibles()= list
-        +cantidad_disponible()= int
+        +buscar_libro(titulo): Libro
+        +catalogo(): list
+        +libros_disponibles(): list
+        +cantidad_disponible(): int
         +registrar_prestamo(usuario, titulo)
-        +registrar_devolucion(titulo)= str
+        +registrar_devolucion(titulo): str
     }
 
     class Libro {
-        -_autor= str
-        -_genero= str
-        -_editorial= str
-        -_esta_prestado= bool
-        +get_titulo()= str
-        +get_autor()= str
-        +get_genero()= str
-        +get_editorial()= str
-        +esta_prestado()= bool
-        +prestar()= bool
-        +devolver()= void
-        +str()= str
+        -_autor: str
+        -_genero: str
+        -_editorial: str
+        -_esta_prestado: bool
+        +get_titulo(): str
+        +get_autor(): str
+        +get_genero(): str
+        +get_editorial(): str
+        +esta_prestado(): bool
+        +prestar(): bool
+        +devolver(): void
     }
 
     class Historial {
-        -_prestamos= list
-        +ver_historial_global()= list
-        +ver_historial_usuario(usuario)= list
-        +ver_prestamos_activos()= list
+        -_prestamos: list
+        +ver_historial_global(): list
+        +ver_historial_usuario(usuario): list
+        +ver_prestamos_activos(): list
     }
 
     class Usuario {
-        -_nombre = str
-        -_email = str
-        -_contrasena = str(hash)
-        +get_nombre() = str
-        +set_nombre(nombre) = void
-        +get_email() = str
-        +set_email(email) = void
-        +get_contrasena() = str
-        +set_contrasena(contrasena) = void
-        +iniciar_sesion() = str
+        -_nombre: str
+        -_email: str
+        -_contrasena: str(hash)
+        +get_nombre(): str
+        +set_nombre(nombre): void
+        +get_email(): str
+        +set_email(email): void
+        +get_contrasena(): str
+        +set_contrasena(contrasena): void
+        +iniciar_sesion(): str
     }
 
     class Prestamo {
-        -_usuario = Usuario
-        -_libro = Libro
-        -_fecha = date
-        -_esta_vigente= bool
-        +obtener_usuario() = Usuario
-        +obtener_libro()= Libro
-        +obtener_fecha()= date
-        +comprobar_si_esta_vigente()= bool
-        +terminar_prestamo()= void
-        +str() = str
+        -_usuario: Usuario
+        -_libro: Libro
+        -_fecha: date
+        -_esta_vigente: bool
+        +obtener_usuario(): Usuario
+        +obtener_libro(): Libro
+        +obtener_fecha(): date
+        +comprobar_si_esta_vigente(): bool
+        +terminar_prestamo(): void
     }
 
     class Estrategia_Recomendacion {
