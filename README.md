@@ -1,62 +1,50 @@
-# Sistema de Gestión de Biblioteca
+Sistema de Gestión de Biblioteca
 
-## Integrantes
+Integrantes
 
-- Pereyra Joaquín Gabriel.
-- Mateo Joaquín Rivero Correa.
-- Jorge Ordoñez.
-- Aldana Gonzalez.
 
-## Descripción
+Pereyra Joaquín Gabriel
+Mateo Joaquín Rivero Correa
+Jorge Ordoñez
+Aldana Gonzalez
 
-Este repositorio contiene un **Sistema de Gestión de Biblioteca**, en el cual se pueden gestionar usuarios, libros y préstamos. Su función principal es la **recomendación de libros**: según el contenido que lea cada usuario, se le dan posibles sugerencias.
 
-El proyecto fue desarrollado en **Python** aplicando el paradigma de **Programación Orientada a Objetos**, para controlar mejor cada clase y aprovechar la facilidad de codificar con este lenguaje.
+Descripción
 
----
+Este repositorio contiene un Sistema de Gestión de Biblioteca, en el cual se pueden gestionar usuarios, libros y préstamos. Su función principal es la recomendación de libros: según el contenido que lea cada usuario, se le dan posibles sugerencias.
 
-## Requisitos
+El proyecto fue desarrollado en Python aplicando el paradigma de Programación Orientada a Objetos, para controlar mejor cada clase y aprovechar la facilidad de codificar con este lenguaje.
 
-- **Python 3.10 o superior**
-- Las siguientes librerías:
-  - `werkzeug` — para el hasheo seguro de contraseñas (necesaria siempre).
-  - `customtkinter` — solo si vas a usar la interfaz gráfica.
 
----
+Cómo ejecutar
 
-## Instalación
+La aplicación se puede usar de dos formas. Las dos comparten las mismas clases; cambia solo la interfaz.
 
-**1. Clonar el repositorio:**
+Opción 1 — Interfaz gráfica (recomendada)
 
-```bash
-git clone https://github.com/aljuliedot/Gestion-de-Biblioteca-UNAB.git
-cd Gestion-de-Biblioteca-UNAB
-```
+La interfaz se abre como una ventana de escritorio local (basada en pywebview). La forma más simple de ejecutarla es con uv, que descarga las librerías necesarias y corre el programa en un solo paso, sin instalar nada de forma permanente:
 
-**2. Instalar las librerías necesarias:**
+bashuv run --with pywebview --with werkzeug interfaz_webview.py
 
-```bash
-pip install werkzeug customtkinter
-```
 
-> Si `pip` no se reconoce, probá con `python -m pip install werkzeug customtkinter`.
-> Si tu entorno está "externally managed", agregá `--break-system-packages` al final.
+El comando se encarga solo de pywebview y werkzeug: no hace falta instalarlos a mano.
 
----
 
-## Cómo ejecutar
 
-El programa se puede usar de **dos formas**. Las dos usan las mismas clases; cambia solo la interfaz.
+Si preferís no usar uv, podés instalar las librerías y ejecutar de la forma clásica:
 
-### Opción 1 — Aplicación de consola (menú)
+bashpip install pywebview werkzeug
+python interfaz_webview.py
 
-```bash
+Opción 2 — Aplicación de consola
+
+Versión de menú por terminal, totalmente funcional:
+
+bashpip install werkzeug
 python main.py
-```
 
-Se abre un menú interactivo con las siguientes opciones:
+Al ejecutarla se muestra un menú interactivo:
 
-```
 1. Agregar libro
 2. Ver catalogo completo
 3. Buscar libro
@@ -66,38 +54,32 @@ Se abre un menú interactivo con las siguientes opciones:
 7. Ver historial global
 8. Ver prestamos activos
 0. Salir
-```
 
 Se elige una opción escribiendo su número y presionando Enter.
 
-### Opción 2 — Interfaz gráfica de escritorio
 
-```bash
-python interfaz.py
-```
+Requisitos
 
-Se abre una ventana con un panel lateral (Catálogo, Agregar libro, Recomendar, Historial). Permite prestar y devolver libros con botones, agregar libros desde un formulario y pedir recomendaciones por autor o género.
 
-> La interfaz requiere `customtkinter` instalado. Si solo querés la versión de consola, no hace falta.
+Python 3.10 o superior
+Para la interfaz gráfica: pywebview y werkzeug (se instalan solas con el comando uv de arriba).
+Para la consola: werkzeug.
 
----
 
-## Estructura del proyecto
 
-| Archivo | Descripción |
-|---|---|
-| `sistema.py` | Todas las clases del sistema (Biblioteca, Libro, Usuario, Prestamo, Historial, estrategias de recomendación). |
-| `main.py` | Aplicación de consola: el menú interactivo. Usa las clases de `sistema.py`. |
-| `interfaz.py` | Interfaz gráfica de escritorio (CustomTkinter). Usa las clases de `sistema.py`. |
-| `README.md` | Este archivo. |
+Si usás uv, no necesitás instalar nada manualmente. Si en Windows el comando python abre la Microsoft Store, usá py o la ruta completa de tu intérprete.
 
----
 
-## Notas
 
-- Si en Windows el comando `python` abre la Microsoft Store, usá `py main.py` o la ruta completa de tu intérprete de Python.
-- La interfaz gráfica es un agregado opcional: la aplicación de consola es totalmente funcional por sí sola.
 
+Estructura del proyecto
+
+ArchivoDescripciónsistema.pyTodas las clases del sistema (Biblioteca, Libro, Usuario, Prestamo, Historial y las estrategias de recomendación). Es el núcleo de la lógica.main.pyAplicación de consola: el menú interactivo. Usa las clases de sistema.py.interfaz_webview.pyInterfaz gráfica de escritorio (ventana local con pywebview). Usa las clases de sistema.py.README.mdEste archivo.
+
+
+Sobre el diseño
+
+El proyecto aplica los cuatro pilares de la Programación Orientada a Objetos (encapsulamiento, abstracción, herencia y polimorfismo) y el patrón de diseño Strategy para las recomendaciones de libros. Tanto el menú de consola como la interfaz gráfica son capas separadas que solo usan las clases del sistema, sin duplicar lógica: si se cambia una interfaz, las clases no se tocan.
 ## Diagrama de Clases
 
 ```mermaid
